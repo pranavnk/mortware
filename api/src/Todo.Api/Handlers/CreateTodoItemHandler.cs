@@ -17,7 +17,7 @@ public class CreateTodoItemHandler : IRequestHandler<CreateTodoItemRequest, Guid
         {
             Created = DateTime.UtcNow,
             Id = Guid.NewGuid(),
-            Text = request.Text
+            Text = request.Text.ToUpper(),
         };
 
         var itemId = await _todoRepository.Create(item);

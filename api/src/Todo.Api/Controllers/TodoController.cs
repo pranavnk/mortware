@@ -13,11 +13,15 @@ public class TodoController : ControllerBase
         _mediator = mediator;
     }
 
-    [HttpGet("todo/list")]
-    public async Task<IActionResult> List() =>
-        Ok(await _mediator.Send(new ListTodoItemsRequest()));
-    
+    [HttpGet("todo/list/{showCompletedItems}")]
+    public async Task<IActionResult> List([FromRoute]bool showCompletedItems) =>
+        Ok(await _mediator.Send(new ListTodoItemsRequest { ShowCompletedItems = showCompletedItems}));
+
     [HttpPost("todo/create")]
     public async Task<IActionResult> Get([FromBody] CreateTodoItemRequest request) =>
+        Ok(await _mediator.Send(request));
+
+    [HttpPatch("todo/complete")]
+    public async Task<IActionResult> Patch([FromBody] CompleteTodoItemRequest request) =>
         Ok(await _mediator.Send(request));
 }

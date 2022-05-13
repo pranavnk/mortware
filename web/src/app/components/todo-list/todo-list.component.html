@@ -2,10 +2,14 @@
 
     <article>
         <form [formGroup]="form" (submit)="submit()">
-            <input type="text" placeholder="Create new item" formControlName="text">
-            <button type="submit"  [disabled]="form.invalid">Submit</button>    
+            <input type="text" placeholder="Create new item" formControlName="text" required>
+            <button type="submit"  [disabled]="form.invalid || submissionInProgress">Submit</button>
         </form>
-        
+    </article>
+    <article>
+      <mat-button-toggle (change)="toggleCompletedVisibility()" matTooltip="Set completed items visibility" >
+        {{(showCompletedItems ? 'Hide' : 'Show') + ' completed items'}}
+      </mat-button-toggle>
     </article>
     <article *ngFor="let item of vm.items">
         <div class="control">
@@ -15,8 +19,14 @@
             {{ item.text }}
         </div>
         <div class="created">
-            {{ item.created | date:'EEE, dd MMM yyyy' }}
-        </div>
+          {{ item.created | date:'EEE, dd MMM yyyy' }}
+      </div>
+      <div class="control">
+        <input type="checkbox" [disabled]="item.completed" [(ngModel)]="item.completed" (change)="complete(item.id)" />
+      </div>
+      <div class="completed">
+        {{ item.completed | date:'EEE, dd MMM yyyy' }}
+      </div>
     </article>
 </div>
 

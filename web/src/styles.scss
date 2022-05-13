@@ -2,53 +2,61 @@
 
 body,
 html {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #ddd;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #ddd;
 }
 
 .todo-list {
-    article {
-        padding: 1rem;
-        margin: 0.5rem;
-        background-color: #fff;
-        filter: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
-        display: flex;
-        align-items: center;
+  article {
+    padding: 1rem;
+    margin: 0.5rem;
+    background-color: #fff;
+    filter: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07))
+      drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
+    display: flex;
+    align-items: center;
 
-        .control {
-            width: 2em;
+    .control {
+      width: 2em;
 
-            fa-icon {
-                color: green;
-            }
-        }
-
-        .text {
-            flex: 1;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-
-            &.completed {
-                color: rgba(0,0,0,0.5);
-                text-decoration: line-through;
-            }
-        }
-
-        .created {
-            font-size: 0.8rem;
-            color: rgba(0, 0, 0, 0.5);
-        }
+      fa-icon {
+        color: green;
+      }
     }
 
-    form {
-        display: flex;
-        flex: 1;
-        //align-items: center;
-        input {
-            padding: 0.5rem;
-            flex: 1;
-            margin-right: 1rem;
-        }
+    .text {
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      &.completed {
+        color: rgba(0, 0, 0, 0.5);
+        text-decoration: line-through;
+      }
     }
+
+    .created {
+      font-size: 0.8rem;
+      color: rgba(0, 0, 0, 0.5);
+    }
+    .completed {
+      font-size: 0.8rem;
+      color: rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  form {
+    display: flex;
+    flex: 1;
+    //align-items: center;
+    input {
+      padding: 0.5rem;
+      flex: 1;
+      margin-right: 1rem;
+    }
+  }
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

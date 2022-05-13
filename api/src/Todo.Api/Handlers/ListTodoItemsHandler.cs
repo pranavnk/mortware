@@ -13,6 +13,6 @@ public class ListTodoItemsHandler : IRequestHandler<ListTodoItemsRequest, IEnume
 
     public async Task<IEnumerable<TodoItem>> Handle(ListTodoItemsRequest request, CancellationToken cancellationToken)
     {
-        return await _todoRepository.List();
+        return await _todoRepository.List(request.ShowCompletedItems);
     }
 }
